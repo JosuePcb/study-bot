@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 import json
-import google.generativeai as genai
+from google import genai
 
 from database import init_db, get_session
 from models import User, FlashcardSet
@@ -23,7 +23,7 @@ from auth import hash_password, verify_password, create_access_token, get_curren
 load_dotenv()
 
 # Configuración de la IA
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 app = FastAPI(title="Flashcard Generator API")
 
@@ -94,8 +94,6 @@ async def generate_flashcards(
 ):
     # Generar flashcards usando Gemini AI (requiere autenticación)
     try:
-        model = genai.GenerativeModel("gemini-pro")
-
         prompt = f"""
         Actúa como un profesor experto. Analiza el siguiente texto y genera 5 preguntas clave con sus respuestas para estudiar.
 
@@ -110,7 +108,10 @@ async def generate_flashcards(
         ]
         """
 
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+        )
         clean_text = response.text.replace("```json", "").replace("```", "").strip()
         flashcards = json.loads(clean_text)
         return {"flashcards": flashcards}
