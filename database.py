@@ -10,11 +10,15 @@ DB_NAME = os.getenv("DB_NAME")
 
 DATABASE_URL = f"postgresql://postgres:{DB_PASSWORD}@localhost:5432/{DB_NAME}"
 
-engine = create_engine(DATABASE_URL, echo=True) # echo=True imprime los SQL en consola (útil para debug)
+engine = create_engine(
+    DATABASE_URL, echo=True
+)  # echo=True imprime los SQL en consola (útil para debug)
+
 
 def init_db():
     # Crea las tablas si no existen
     SQLModel.metadata.create_all(engine)
+
 
 def get_session():
     # Dependencia para inyectar la sesión en cada request
