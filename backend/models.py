@@ -1,7 +1,8 @@
 # backend/models.py
-from typing import List
-from sqlmodel import Field, Relationship, SQLModel
 from datetime import datetime
+from typing import List
+
+from sqlmodel import Field, Relationship, SQLModel
 
 
 class User(SQLModel, table=True):
