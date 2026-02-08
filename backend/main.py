@@ -11,10 +11,10 @@ from fastapi.security import OAuth2PasswordRequestForm
 from google import genai
 from sqlmodel import Session, select
 
-from .auth import hash_password, verify_password, create_access_token, get_current_user
-from .database import init_db, get_session
-from .models import User, FlashcardSet
-from .schemas import (
+from auth import hash_password, verify_password, create_access_token, get_current_user
+from database import init_db, get_session
+from models import User, FlashcardSet
+from schemas import (
     FlashcardSaveRequest,
     TextRequest,
     Token,
@@ -25,7 +25,7 @@ from .schemas import (
 # Cargar variables de entorno
 load_dotenv()
 
-# Configuración de la IA
+# Configuración de la IA - El cliente obtiene la API key de la variable de entorno GEMINI_API_KEY
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 app = FastAPI(title="Flashcard Generator API")
@@ -113,7 +113,7 @@ async def generate_flashcards(
         """
 
         response = client.models.generate_content(
-            model="gemini-2.0-flash-001",
+            model="gemini-2.5-flash",
             contents=prompt,
         )
         clean_text = response.text.replace("```json", "").replace("```", "").strip()
@@ -131,8 +131,12 @@ def save_flashcards(
     session: Session = Depends(get_session),
 ):
     """Guardar un set de flashcards para el usuario autenticado"""
+    # Convertir la lista de flashcards a JSON string para almacenar
+    flashcards_json = json.dumps(
+        [fc.model_dump() for fc in data.flashcards], ensure_ascii=False
+    )
     new_set = FlashcardSet(
-        topic=data.topic, content_json=data.flashcards_json, user_id=current_user.id
+        topic=data.topic, content_json=flashcards_json, user_id=current_user.id
     )
     session.add(new_set)
     session.commit()
