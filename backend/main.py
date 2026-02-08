@@ -1,24 +1,26 @@
 # backend/main.py
-from typing import Annotated
-from fastapi import FastAPI, Depends, HTTPException
-from fastapi.security import OAuth2PasswordRequestForm
-from sqlmodel import Session, select
-from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-import os
 import json
-from google import genai
+import os
+import traceback
+from typing import Annotated
 
-from database import init_db, get_session
-from models import User, FlashcardSet
-from schemas import (
+from dotenv import load_dotenv
+from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import OAuth2PasswordRequestForm
+from google import genai
+from sqlmodel import Session, select
+
+from .auth import hash_password, verify_password, create_access_token, get_current_user
+from .database import init_db, get_session
+from .models import User, FlashcardSet
+from .schemas import (
+    FlashcardSaveRequest,
+    TextRequest,
+    Token,
     UserCreate,
     UserResponse,
-    Token,
-    TextRequest,
-    FlashcardSaveRequest,
 )
-from auth import hash_password, verify_password, create_access_token, get_current_user
 
 # Cargar variables de entorno
 load_dotenv()
@@ -68,8 +70,6 @@ def signup(user_data: UserCreate, session: Session = Depends(get_session)):
     except HTTPException:
         raise
     except Exception as e:
-        import traceback
-
         error_detail = f"{type(e).__name__}: {str(e)}\n{traceback.format_exc()}"
         raise HTTPException(status_code=500, detail=error_detail)
 
