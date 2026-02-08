@@ -32,6 +32,11 @@ class TextRequest(BaseModel):
     text: str
 
 
+class Flashcard(BaseModel):
+    question: str
+    answer: str
+
+
 class FlashcardSaveRequest(BaseModel):
     topic: str
-    flashcards_json: str
+    flashcards: list[Flashcard]  # Lista de flashcards directamente

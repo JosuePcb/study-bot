@@ -17,11 +17,9 @@ engine = create_engine(
 
 
 def init_db():
-    # Crea las tablas si no existen
     SQLModel.metadata.create_all(engine)
 
 
 def get_session():
-    # Dependencia para inyectar la sesión en cada request
     with Session(engine) as session:
         yield session
