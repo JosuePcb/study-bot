@@ -4,16 +4,16 @@
 
 :root{
     --color-principal: #191716;
-    --color-secundario: #E0E2DB;
+    --color-secundario: #C9C4B4;
+    --color-terciario: #FF5A1F;
+    --color-cuarto: #E2E4DD;
 }
-
 body{
     display: flex;
     min-height: 100vh;
     margin: 0;
     font-family:"Roboto";
     font-weight: 400;
-    color: white;
     background-color:var(--color-principal) ;
 }
 
@@ -40,8 +40,7 @@ h1{
 a{
     text-decoration: none;
     font-weight: bold;
-    color: var(--color-principal);
-
+    color: var(--color-terciario);
 }
 
 p{
@@ -65,7 +64,6 @@ input{
     padding: 2%;
     margin: 0 1vw 3vh 1vw;
     background: transparent;
-
     font-weight: bold;
     font-size: medium;
     border: transparent;
@@ -81,20 +79,20 @@ button{
     margin-top: 1vh;
     margin-bottom: 2vh;
     align-self: center;
-    font-size: large;
-    background-color: var(--color-principal);
-    color: var(--color-secundario);
-    box-shadow: 0 0 1px 2px var(--color-principal);
+    font-size: medium;
+    font-weight: bold;
+    background-color: var(--color-terciario);
+    color: var(--color-principal);
+    box-shadow: 0 0 2px 1px var(--color-principal);
     cursor: pointer;
     transition: all 0.3s ease;
-    border: transparent
+    border: none;
+    border-radius: 1vh;
 }
 
 button:hover{
-    color: var(--color-principal);
-    background-color:   var(--color-secundario);
-    border-color: var(--color-principal);
-
+    color: var(--color-secundario);
+    background-color:   var(--color-principal);
 }
 
 
