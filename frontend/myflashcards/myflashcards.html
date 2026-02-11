@@ -3,27 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyBot</title>
-    <link rel="stylesheet" href="index.css">
+    <title>My Flashcards - StudyBot</title>
+    <link rel="stylesheet" href="myflashcards.css">
 </head>
 <body>
 
     <header class="navbar">
-        <div class="logo">StudyBot</div>
-        <a href="../login/login.html" class="my-flashcards">My Flashcards</a>
+        <a href="../index/index.html" class="logo">StudyBot</a>
+        <a href="#" class="my-flashcards active">My Flashcards</a>
     </header>
 
-    <main id="main">
-        <div name="welcome">
-            <p id="welcometo">Welcome to</p>
-            <p id="studybot">StudyBot!</p>
+    <!-- Vista principal: Grid de sets de flashcards -->
+    <main id="sets-view">
+        <h1 class="page-title">My Flashcards</h1>
+        <p class="page-subtitle">All your saved study sets</p>
+
+        <div id="sets-container" class="sets-grid">
+            <!-- Los sets se renderizan dinamicamente via JS -->
         </div>
 
-        <textarea name="request" id="request" placeholder="Ask StudyBot" maxlength="2000" rows="1"></textarea>
-
-        <label for="request">Paste your books, notes, or any study material</label>
+        <!-- Estado vacio -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+            <div class="empty-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h2>No flashcards yet</h2>
+            <p>Start by creating flashcards from the home page</p>
+            <a href="../index/index.html" class="btn-primary">Create Flashcards</a>
+        </div>
     </main>
-    <script src="index.js" ></script>
+
+    <!-- Vista detalle: Flashcards de un set -->
+    <main id="detail-view" style="display: none;">
+        <div class="detail-header">
+            <button id="back-btn" class="btn-back" aria-label="Go back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back</span>
+            </button>
+            <div class="detail-info">
+                <h1 id="detail-topic" class="detail-title"></h1>
+                <p id="detail-meta" class="detail-meta"></p>
+            </div>
+        </div>
+
+        <div id="flashcards-container" class="flashcards-grid">
+            <!-- Las flashcards individuales se renderizan via JS -->
+        </div>
+    </main>
+
+    <script src="myflashcards.js"></script>
 </body>
 </html>
 

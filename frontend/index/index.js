@@ -10,7 +10,9 @@ const areaTexto = document.getElementById('request');
 
 //Lista de flashcards
 
-//const flashcards = [
+
+
+const flashcards = [
 {   question: "¿Qué es una variable en Python?", 
     answer: "Es un espacio en memoria para almacenar un dato." },
 
@@ -24,6 +26,7 @@ const areaTexto = document.getElementById('request');
     answer: "function miFuncion() { /* ... */ }"},
 ];
 
+
 const main = document.getElementById('main');
 if (flashcards.length > 0) {
     main.innerHTML = "";
@@ -33,13 +36,21 @@ if (flashcards.length > 0) {
         // Crear contenedor para las flashcards con id
     const flashcardsContainer = document.createElement('div');
     flashcardsContainer.id = "flashcards-container";
-        // Agregar el input de título
+        // Agregar el input y parrafo de título
+
+    const subtitle = document.createElement("h2")
+    subtitle.textContent = "Insert a title to save your flashcards";
+    subtitle.className = "subtitle"
+    flashcardsContainer.appendChild(subtitle);
+
     const inputTitle = document.createElement('input');
     inputTitle.type = "text";
     inputTitle.className = "title-flashcards";
     inputTitle.placeholder = "Title";
     inputTitle.maxLength = "40"
     flashcardsContainer.appendChild(inputTitle);
+
+
 
     flashcards.forEach(card => {
         const cardDiv = document.createElement('div');

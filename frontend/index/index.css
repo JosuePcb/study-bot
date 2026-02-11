@@ -56,8 +56,6 @@ main{
     flex-direction: column;
     justify-content: center; 
     align-items: center;   
-    width: 100%;
-    height: 10%;
     opacity: 0;
     transform: translateY(20px); 
     animation: fade 0.8s ease-out forwards;
@@ -121,7 +119,19 @@ label{
     color: var(--color-cuarto);
     opacity: 60%;
     line-height: 3rem;
+    
 }
+
+.subtitle{
+    width: 100%;
+    font-size: 100%;
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--color-secundario);
+    opacity: 60%;
+    font-weight: normal;
+}
+
 
 input{
     background: transparent;
@@ -129,7 +139,6 @@ input{
     border-bottom: 2px solid var(--color-secundario);
     color: var(--color-secundario);
     font-size: 1.5rem;
-    font-weight: 300;
     text-align: center;
     transition: border-color 0.5s;
     width: 50%;
@@ -165,11 +174,12 @@ input:focus{
     min-height: 20vh;
     height: auto;  
 
-    box-shadow: 0 1px 3px var(--color-secundario);
+    box-shadow: 0 1px 5px var(--color-secundario);
     background: var(--color-cuarto);
     color: var(--color-principal);
     border-radius: 15px; 
 }
+
 
 .flashcard div {
     flex-grow: 1;
@@ -215,6 +225,9 @@ button:hover {
     box-shadow: 1px 1px 2px var(--color-secundario);
 }
 
+#submitBtn:hover{
+    box-shadow: 2px 2px 5px var(--color-secundario);
+}
 
 
 @keyframes fadeIn {
