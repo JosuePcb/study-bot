@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - StudyBot</title>
+    <title>Registro - StudyBot</title>
     <link rel="stylesheet" href="login.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -12,20 +12,21 @@
 <body>
     <main>
         <h1><i data-lucide="brain" class="icon"></i> StudyBot</h1>
-        <p>Ingresa tus credenciales para continuar</p>
-        <form id="loginForm">
+        <p>Crear nueva cuenta</p>
+        <form id="signupForm">
+            <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
             <input type="email" name="email" id="email" placeholder="Correo electrónico" required>
-            <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            <input type="password" name="password" id="password" placeholder="Contraseña" required minlength="6">
             <div id="error-msg" class="error-msg"></div>
-            <button type="submit" id="loginBtn"><i data-lucide="log-in" class="icon-sm"></i> Iniciar Sesión</button>
-            <p>¿No tienes cuenta? <a href="signup.html">Regístrate</a></p>
+            <button type="submit" id="signupBtn"><i data-lucide="user-plus" class="icon-sm"></i> Registrarse</button>
+            <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
         </form>
     </main>
     <footer class="footer">
         <p>&copy; 2026 StudyBot. Designed by Aaron Duque and Josue Hernández.</p>
     </footer>
     <script src="../js/auth.js"></script>
-    <script src="login.js"></script>
+    <script src="signup.js"></script>
     <script>lucide.createIcons();</script>
 </body>
 
