@@ -1,29 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyBot</title>
+    <title>StudyBot - Generador de Flashcards</title>
     <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
     <header class="navbar">
-        <div class="logo"><a href="#">StudyBot</a></div>
-        <a href="../myflashcards/myflashcards.html" class="my-flashcards">My Flashcards</a>
+        <div class="logo"><a href="#"><i data-lucide="brain" class="icon-sm"></i> StudyBot</a></div>
+        <nav class="nav-links">
+            <a href="../myflashcards/myflashcards.html" class="nav-link"><i data-lucide="bookmark" class="icon-sm"></i>
+                Mis Flashcards</a>
+            <a href="#" id="logoutBtn" class="nav-link logout-link"><i data-lucide="log-out" class="icon-sm"></i>
+                Salir</a>
+        </nav>
     </header>
 
     <main id="main">
-        <div name="welcome">
-            <p id="welcometo">Welcome to</p>
+        <div id="welcome-section">
+            <p id="welcometo">Bienvenido a</p>
             <p id="studybot">StudyBot!</p>
         </div>
 
-        <textarea name="request" id="request" placeholder="Ask StudyBot" maxlength="2000" rows="1"></textarea>
+        <textarea name="request" id="request" placeholder="Escribe o pega tu texto aquí..." maxlength="5000"
+            rows="1"></textarea>
+        <label for="request">Escribe o pega el tema que quieres estudiar</label>
 
-        <label for="request">Paste your books, notes, or any study material</label>
+        <button id="generateBtn" class="generate-btn"><i data-lucide="sparkles" class="icon-sm"></i> Generar
+            Flashcards</button>
+
+        <!-- Loading spinner -->
+        <div id="loading" class="loading-container" style="display: none;">
+            <div class="spinner"></div>
+            <p class="loading-text">Generando flashcards con IA...</p>
+        </div>
+
+        <!-- Contenedor de flashcards generadas -->
+        <div id="flashcards-container" style="display: none;"></div>
     </main>
-    <script src="index.js" ></script>
-</body>
-</html>
 
+    <footer class="footer">
+        <p>&copy; 2026 StudyBot. Designed by Aaron Duque and Josue Hernández.</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="index.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

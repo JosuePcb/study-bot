@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo Estudio - StudyBot</title>
+    <link rel="stylesheet" href="study.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="../index/index.html" class="logo"><i data-lucide="brain" class="icon-sm"></i> StudyBot</a>
+        <nav class="nav-links">
+            <a href="#" id="backLink" class="nav-link"><i data-lucide="arrow-left" class="icon-sm"></i> Volver</a>
+            <a href="#" id="logoutBtn" class="nav-link logout-link"><i data-lucide="log-out" class="icon-sm"></i>
+                Salir</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="study-header">
+            <h1 id="study-topic" class="study-title"></h1>
+            <p id="study-progress" class="study-progress"></p>
+        </div>
+
+        <div id="study-card" class="study-card">
+            <div id="card-content" class="card-content">
+                <p id="card-label" class="card-label">Pregunta</p>
+                <p id="card-text" class="card-text"></p>
+            </div>
+
+            <button id="revealBtn" class="reveal-btn"><i data-lucide="eye" class="icon-sm"></i> Mostrar
+                Respuesta</button>
+        </div>
+
+        <div class="study-nav">
+            <button id="prevBtn" class="nav-btn" disabled><i data-lucide="chevron-left" class="icon-sm"></i>
+                Anterior</button>
+            <div id="dots-container" class="dots-container"></div>
+            <button id="nextBtn" class="nav-btn">Siguiente <i data-lucide="chevron-right" class="icon-sm"></i></button>
+        </div>
+
+        <p class="keyboard-hint">Usa ← → para navegar · Espacio para mostrar/ocultar respuesta</p>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 StudyBot. Designed by Aaron Duque and Josue Hernández.</p>
+    </footer>
+
+    <script src="../js/auth.js"></script>
+    <script src="study.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

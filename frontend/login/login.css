@@ -2,65 +2,81 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-:root{
+:root {
     --color-principal: #191716;
     --color-secundario: #C9C4B4;
     --color-terciario: #FF5A1F;
     --color-cuarto: #E2E4DD;
 }
-body{
-    display: flex;
-    min-height: 100vh;
-    margin: 0;
-    font-family:"Roboto";
-    font-weight: 400;
-    background-color:var(--color-principal) ;
+
+.icon {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
-main{
+.icon-sm {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Roboto";
+    font-weight: 400;
+    background-color: var(--color-principal);
+}
+
+main {
     background-color: var(--color-secundario);
-    margin: auto;
     text-align: center;
     width: 100%;
     max-width: 350px;
     padding: 2.5vh;
     border-radius: 6%;
-    opacity: 100%;
-    border: 1px solid;
-    border-color: var(--color-secundario);
+    border: 1px solid var(--color-secundario);
     color: var(--color-principal);
     box-shadow: 0px 0px 4px 0px var(--color-secundario);
 }
 
-h1{
+h1 {
     margin-bottom: 1rem;
     font-family: "Roboto";
 }
 
-a{
+a {
     text-decoration: none;
     font-weight: bold;
     color: var(--color-terciario);
 }
 
-p{
+p {
     margin-bottom: 4vh;
-    color: rgba(25, 23, 22, 0.6 );
+    color: rgba(25, 23, 22, 0.6);
+    text-align: center;
 }
 
-label{
+label {
     margin-bottom: 1vh;
     font-weight: bold;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     text-align: start;
     padding: 1.5v;
 }
 
-input{
+input {
     padding: 2%;
     margin: 0 1vw 3vh 1vw;
     background: transparent;
@@ -74,7 +90,7 @@ input:focus {
     outline: none;
 }
 
-button{
+button {
     padding: 1.5vh 3vw;
     margin-top: 1vh;
     margin-bottom: 2vh;
@@ -90,9 +106,28 @@ button{
     border-radius: 1vh;
 }
 
-button:hover{
+button:hover {
     color: var(--color-secundario);
-    background-color:   var(--color-principal);
+    background-color: var(--color-principal);
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
+.error-msg {
+    color: #EF4444;
+    font-size: 0.85rem;
+    text-align: center;
+    min-height: 1.2rem;
+    margin-bottom: 1vh;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--color-secundario);
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
