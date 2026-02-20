@@ -32,7 +32,7 @@ generateBtn.addEventListener("click", async function () {
         return;
     }
 
-    if (text.length < 20) {
+    if (text.length < 15) {
         showToast("El texto es muy corto. Ingresa más contenido.", "error");
         return;
     }
