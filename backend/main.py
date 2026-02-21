@@ -10,7 +10,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from google import genai
 from sqlmodel import Session, select
-from fastapi.responses import FileResponse
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 from .auth import hash_password, verify_password, create_access_token, get_current_user
 from .database import init_db, get_session
@@ -157,13 +158,11 @@ def get_my_flashcards(
     return results
 
 
-# Verificar funcionamiento de la API
+# APP MAIN DEPLOY
+app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 @app.get("/")
-async def read_index():
-    file_path = os.path.join(os.getcwd(), "frontend", "login", "login.html")
-    
-    if os.path.exists(file_path):
-        return FileResponse(file_path)
-    return {"error": f"No se encontró el archivo en {file_path}"}
+async def read_login():
+    return RedirectResponse(url="/static/login/login.html")
