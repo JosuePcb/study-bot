@@ -11,7 +11,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from google import genai
 from sqlmodel import Session, select
 
-from auth import hash_password, verify_password, create_access_token, get_current_user
+from .auth import hash_password, verify_password, create_access_token, get_current_user
 from database import init_db, get_session
 from models import User, FlashcardSet
 from schemas import (
