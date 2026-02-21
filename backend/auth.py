@@ -8,8 +8,8 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlmodel import Session
 
-from database import get_session
-from models import User
+from .database import get_session
+from .models import User
 
 # Configuración
 load_dotenv()
