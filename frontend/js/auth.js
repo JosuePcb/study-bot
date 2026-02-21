@@ -1,5 +1,5 @@
 // ===== Configuración de la API =====
-var API_BASE_URL = "http://localhost:8000";
+var API_BASE_URL = "https://study-bot-u4w6.onrender.com";
 
 // ===== Manejo de Token =====
 

@@ -35,7 +35,7 @@ app = FastAPI(title="Flashcard Generator API")
 # Configurar CORS para que el Frontend pueda hablar con el Backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://study-bot-u4w6.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -159,7 +159,6 @@ def get_my_flashcards(
 
 
 # APP MAIN DEPLOY
-app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
